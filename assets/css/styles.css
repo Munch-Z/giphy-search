@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.gifStyles {
+    width: 250px;
+    height: 250px;
+}
+
+.buttonStyles {
+    margin: 0 10px;
+    padding: 5px;
+}
