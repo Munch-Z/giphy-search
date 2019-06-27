@@ -48,6 +48,7 @@ function updateGifs(obj) {
         let altText = obj.data[i].title;
 
         let newDiv = document.createElement('div');
+        newDiv.classList.add('gifWrapper');
 
         newDiv.innerHTML = `<img class="gifStyles"  src="${stillImage}" alt="${altText}" data-alt="${gif}">
         <div class="text-wrapper">Rating: ${rating.toUpperCase()}</div>`;

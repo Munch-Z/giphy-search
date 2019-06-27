@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,22 +8,30 @@
     <title>Giphy Search</title>
     <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
 </head>
+
 <body>
-    <header><h1>Giphy Search</h1></header>
+    <header>
+        <h1>Giphy Search</h1>
+    </header>
 
-    <div id="buttons"></div>
-    
-    
-    <label for="addButton">Add a new search term!</label>
-    <input type="text" id="addButton">
-    <input type="submit" id="submitBtn" value="Submit">
+    <section id="buttonsMain">
+        <div id="buttons" class="max-width"></div>
 
-    <div id="gifs"></div>
+        <aside>
+            <label for="addButton">Add a new search term!</label>
+            <input type="text" id="addButton">
+            <input type="submit" id="submitBtn" value="Submit">
+        </aside>
+
+    </section>
+
+    <div id="gifs" class="max-width"></div>
 
 
 
 
 
-<script src="assets/javascript/search.js"></script>
+    <script src="assets/javascript/search.js"></script>
 </body>
+
 </html>
