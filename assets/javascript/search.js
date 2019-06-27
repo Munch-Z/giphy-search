@@ -13,8 +13,8 @@ let gifsClick = document.querySelectorAll('.gifStyles');
 
 let topics = ['Messin', 'Sad', 'Happy', 'Excited', 'Horrified', 'Zach Galifinakis', 'Funny', 'Nervous', 'Nature', 'Angry'];
 
-function makeButtons (arr){
-    for(let i = 0; i < arr.length; i++){
+function makeButtons(arr) {
+    for (let i = 0; i < arr.length; i++) {
         let button = document.createElement('button');
 
         button.value = arr[i];
@@ -24,5 +24,29 @@ function makeButtons (arr){
         buttonsDiv.appendChild(button);
     }
 }
+
+function queryGiphy (value){
+    let apiKey = 'Vh31uI0oj8Okq5Ta1Gvn85LtomDftORM';
+    
+    fetch(`https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${value}&rating=G&lang=en&limit=10`, {
+        method: 'GET'
+    }).then(function(response){
+        return response.json();
+    }).then(function(myJson){
+        console.log(myJson);
+    })
+}
+
+function updateGifs (obj){
+    for(let i = 0; i < obj.length; i++){
+        
+    }
+}
+
+
+
+
+queryGiphy('dogs');
+
 
 makeButtons(topics);
