@@ -27,8 +27,10 @@ function makeButtons(arr) {
 
 function queryGiphy (value){
     let apiKey = 'Vh31uI0oj8Okq5Ta1Gvn85LtomDftORM';
-    
-    fetch(`https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${value}&rating=G&lang=en&limit=10`, {
+    let searchTerm = value.replace(/\u0020/g, '+');
+
+
+    fetch(`https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${searchTerm}&lang=en&limit=10`, {
         method: 'GET'
     }).then(function(response){
         return response.json();
@@ -40,7 +42,7 @@ function queryGiphy (value){
 function updateGifs (obj){
 
     for (let i = 0; i < obj.data.length; i++){
-        console.log('I fired');
+
         let stillImage = obj.data[i].images.fixed_width_still.url;
         let gif = obj.data[i].images.fixed_width.url;
         let rating = obj.data[i].rating;
@@ -56,10 +58,15 @@ function updateGifs (obj){
     }
 }
 
+buttonsDiv.addEventListener('click', function(event){
+    
+    if (!event.target.matches('.buttonStyles')){
+        return;
+    } else {
+        queryGiphy(event.target.value);
+    }
+})
 
-
-
-// queryGiphy('dogs');
 
 
 makeButtons(topics);
