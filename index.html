@@ -10,19 +10,22 @@
 </head>
 
 <body>
-    <header>
+
+    <header class="max-width">
         <h1>Giphy Search</h1>
     </header>
 
+
+
+    <aside>
+        <label for="addButton">Add a new search term!</label>
+        <input type="text" id="addButton">
+        <input type="submit" id="submitBtn" value="Submit">
+    </aside>
+
+
     <section id="buttonsMain">
         <div id="buttons" class="max-width"></div>
-
-        <aside>
-            <label for="addButton">Add a new search term!</label>
-            <input type="text" id="addButton">
-            <input type="submit" id="submitBtn" value="Submit">
-        </aside>
-
     </section>
 
     <div id="gifs" class="max-width"></div>

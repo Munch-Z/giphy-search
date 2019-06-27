@@ -26,15 +26,19 @@ html, body{
 .buttonStyles {
     margin: 1% 10px;
     padding: 5px;
-    width: 100px;
+    width: 115px;
 }
 
 header {
     font-size: 2em;
-    margin-top: 3%;
     border-bottom: solid maroon 5px;
+    width: 100%;
     max-width: 66%;
+    display: inline-block;
 }
+    
+
+
 
 .max-width {
     max-width: 66%;
@@ -47,15 +51,23 @@ section{
 }
 
 aside{
-    display:flex;
-    flex-direction: column;
-    margin-left: 25%;
+    display: inline-block;
+    position: relative;
+    bottom: -45px;
+    padding-left: 10px;
+}
+
+#submitBtn{
+    max-width: 60px;
+    margin: 10px 0px;
 }
 
 #gifs {
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+/* Need breakpoint for search box at 1024 */
 
 @media only screen and (max-width: 640px){
     #gifs {
