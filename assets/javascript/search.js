@@ -5,10 +5,6 @@ let submitBtn = document.getElementById('submitBtn');
 let gifsDiv = document.getElementById('gifs');
 let addButton = document.getElementById('addButton');
 
-let buttonsClick = document.querySelectorAll('.buttonStyles');
-
-let gifsClick = document.querySelectorAll('.gifStyles');
-
 //array
 
 let topics = ['Messin', 'Sad', 'Happy', 'Excited', 'Horrified', 'Zach Galifinakis', 'Funny', 'Nervous', 'Nature', 'Angry'];
@@ -50,7 +46,7 @@ function updateGifs (obj){
 
         let newDiv = document.createElement('div');
         
-        newDiv.innerHTML = `<img class="gifStyles"  src="${stillImage}" alt="${altText}" data-alt="${gif}>
+        newDiv.innerHTML = `<img class="gifStyles"  src="${stillImage}" alt="${altText}" data-alt="${gif}">
         <div class="text-wrapper">Rating: ${rating.toUpperCase()}</div>`;
 
         gifsDiv.appendChild(newDiv);
@@ -64,6 +60,28 @@ buttonsDiv.addEventListener('click', function(event){
         return;
     } else {
         queryGiphy(event.target.value);
+    }
+})
+
+gifsDiv.addEventListener('click', function(event){
+    
+    let gifRunning = false;
+
+    if (!event.target.matches('.gifStyles')){
+        return;
+    } else {
+        let src = event.target.src;
+        console.log('First console log', src);
+       if (!gifRunning){
+           gifRunning = true;
+           event.target.src = event.target.dataset.alt;
+           event.target.dataset.alt = src;
+       } else {
+            console.log(src);
+            gifRunning = true;
+            event.target.src = event.target.dataset.alt;
+            event.target.dataset.alt = src;
+       }
     }
 })
 
