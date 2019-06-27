@@ -10,6 +10,9 @@ let addButton = document.getElementById('addButton');
 let topics = ['Messin', 'Sad', 'Happy', 'Excited', 'Horrified', 'Zach Galifinakis', 'Funny', 'Nervous', 'Nature', 'Angry'];
 
 function makeButtons(arr) {
+
+    buttonsDiv.innerHTML = '';
+
     for (let i = 0; i < arr.length; i++) {
         let button = document.createElement('button');
 
@@ -31,7 +34,7 @@ function queryGiphy(value) {
     }).then(function (response) {
         return response.json();
     }).then(function (myJson) {
-       updateGifs(myJson);
+        updateGifs(myJson);
     })
 }
 
@@ -88,19 +91,13 @@ submitBtn.addEventListener('click', function (event) {
     event.preventDefault();
 
     let userInput = document.getElementById('addButton').value;
-    let button = document.createElement('button');
 
     if (userInput !== '') {
-        button.value = userInput;
-        button.textContent = userInput;
-        button.classList.add('buttonStyles');
-
-        buttonsDiv.appendChild(button);
-
-        document.getElementById('addButton').value = '';
+        topics.push(userInput);
+        makeButtons(topics);
     }
 
-
+    document.getElementById('addButton').value = '';
 })
 
 
