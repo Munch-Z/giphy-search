@@ -21,68 +21,86 @@ function makeButtons(arr) {
     }
 }
 
-function queryGiphy (value){
+function queryGiphy(value) {
     let apiKey = 'Vh31uI0oj8Okq5Ta1Gvn85LtomDftORM';
     let searchTerm = value.replace(/\u0020/g, '+');
 
 
     fetch(`https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${searchTerm}&lang=en&limit=10`, {
         method: 'GET'
-    }).then(function(response){
+    }).then(function (response) {
         return response.json();
-    }).then(function(myJson){
-        updateGifs(myJson);
+    }).then(function (myJson) {
+       updateGifs(myJson);
     })
 }
 
-function updateGifs (obj){
+function updateGifs(obj) {
 
-    for (let i = 0; i < obj.data.length; i++){
+    for (let i = 0; i < obj.data.length; i++) {
 
-        let stillImage = obj.data[i].images.fixed_width_still.url;
-        let gif = obj.data[i].images.fixed_width.url;
+        let stillImage = obj.data[i].images.original_still.url;
+        let gif = obj.data[i].images.original.url;
         let rating = obj.data[i].rating;
         let altText = obj.data[i].title;
 
         let newDiv = document.createElement('div');
-        
+
         newDiv.innerHTML = `<img class="gifStyles"  src="${stillImage}" alt="${altText}" data-alt="${gif}">
         <div class="text-wrapper">Rating: ${rating.toUpperCase()}</div>`;
 
         gifsDiv.appendChild(newDiv);
-        
+
     }
 }
 
-buttonsDiv.addEventListener('click', function(event){
-    
-    if (!event.target.matches('.buttonStyles')){
+buttonsDiv.addEventListener('click', function (event) {
+
+    if (!event.target.matches('.buttonStyles')) {
         return;
     } else {
         queryGiphy(event.target.value);
     }
 })
 
-gifsDiv.addEventListener('click', function(event){
-    
+gifsDiv.addEventListener('click', function (event) {
+
     let gifRunning = false;
 
-    if (!event.target.matches('.gifStyles')){
+    if (!event.target.matches('.gifStyles')) {
         return;
     } else {
         let src = event.target.src;
-        console.log('First console log', src);
-       if (!gifRunning){
-           gifRunning = true;
-           event.target.src = event.target.dataset.alt;
-           event.target.dataset.alt = src;
-       } else {
-            console.log(src);
+        if (!gifRunning) {
             gifRunning = true;
             event.target.src = event.target.dataset.alt;
             event.target.dataset.alt = src;
-       }
+        } else {
+            gifRunning = true;
+            event.target.src = event.target.dataset.alt;
+            event.target.dataset.alt = src;
+        }
     }
+})
+
+submitBtn.addEventListener('click', function (event) {
+
+    event.preventDefault();
+
+    let userInput = document.getElementById('addButton').value;
+    let button = document.createElement('button');
+
+    if (userInput !== '') {
+        button.value = userInput;
+        button.textContent = userInput;
+        button.classList.add('buttonStyles');
+
+        buttonsDiv.appendChild(button);
+
+        document.getElementById('addButton').value = '';
+    }
+
+
 })
 
 
