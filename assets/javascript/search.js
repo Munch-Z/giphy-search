@@ -69,22 +69,14 @@ buttonsDiv.addEventListener('click', function (event) {
 
 gifsDiv.addEventListener('click', function (event) {
 
-    let gifRunning = false;
-
     if (!event.target.matches('.gifStyles')) {
         return;
     } else {
         let src = event.target.src;
-        if (!gifRunning) {
-            gifRunning = true;
-            event.target.src = event.target.dataset.alt;
-            event.target.dataset.alt = src;
-        } else {
-            gifRunning = true;
-            event.target.src = event.target.dataset.alt;
-            event.target.dataset.alt = src;
-        }
+        event.target.src = event.target.dataset.alt;
+        event.target.dataset.alt = src;
     }
+
 })
 
 submitBtn.addEventListener('click', function (event) {
